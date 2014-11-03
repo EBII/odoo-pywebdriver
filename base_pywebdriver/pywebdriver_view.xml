@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <menuitem id="menu_pywebdriver"
+                  name="Pywebdriver"
+                  parent="base.menu_administration"
+                  />
+
+    <!-- PYWEBDRIVER SERVER VIEW -->
+
+        <record id="pywebdriver_server_form_view" model="ir.ui.view">
+            <field name="name">pywebdriver.server.form</field>
+            <field name="model">pywebdriver.server</field>
+            <field name="arch" type="xml">
+                <form string="Pywebdriver Server">
+                    <group>
+                        <field name="name"/>
+                        <field name="url"/>
+                    </group>
+                    <notebook colspan="4">
+                        <page name="printers" string="Printers">
+                            <field name="printer_ids" nolabel="1">
+                                <tree string="Printers">
+                                    <field name="name"/>
+                                    <field name="code"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <record id="pywebdriver_server_tree_view" model="ir.ui.view">
+            <field name="name">pywebdriver.server.tree</field>
+            <field name="model">pywebdriver.server</field>
+            <field name="arch" type="xml">
+                <tree string="Server" >
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="pywebdriver_server_tree_action" model="ir.actions.act_window">
+            <field name="name">Pywebdriver Server</field>
+            <field name="res_model">pywebdriver.server</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{"search_default_user_id":uid}</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create new pywebdriver server.
+              </p>
+            </field>
+        </record>
+
+        <menuitem action="pywebdriver_server_tree_action"
+                  id="menu_pywebdriver_server"
+                  name="Server"
+                  parent="menu_pywebdriver"
+                  />
+
+    <!-- PYWEBDRIVER PRINTER VIEW -->
+
+        <record id="pywebdriver_printer_form_view" model="ir.ui.view">
+            <field name="name">pywebdriver.printer.form</field>
+            <field name="model">pywebdriver.printer</field>
+            <field name="arch" type="xml">
+                <form string="Pywebdriver Printer">
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                    </group>
+                    <group>
+                        <field name="server_id"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="pywebdriver_printer_tree_view" model="ir.ui.view">
+            <field name="name">pywebdriver.printer.tree</field>
+            <field name="model">pywebdriver.printer</field>
+            <field name="arch" type="xml">
+                <tree string="Printer" >
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="pywebdriver_printer_tree_action" model="ir.actions.act_window">
+            <field name="name">Pywebdriver Printer</field>
+            <field name="res_model">pywebdriver.printer</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{"search_default_user_id":uid}</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create new pywebdriver printer.
+              </p>
+            </field>
+        </record>
+
+        <menuitem action="pywebdriver_printer_tree_action"
+                  id="menu_pywebdriver_printer"
+                  name="Printer"
+                  parent="menu_pywebdriver"
+                  />
+
+    <!-- SEARCH PYWEBDRIVER SERVER VIEW -->
+
+        <record model="ir.actions.client" id="pywebdriver_search_action">
+            <field name="name">Discovery</field>
+            <field name="tag">discovery</field>
+            <field name="params">{}</field>
+        </record>
+
+        <menuitem action="pywebdriver_search_action"
+                  id="menu_pywebdriver_search_server"
+                  name="Discovery Server"
+                  parent="menu_pywebdriver"
+                  />
+
+    </data>
+</openerp>
