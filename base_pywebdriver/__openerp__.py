@@ -19,18 +19,20 @@
 #
 ##############################################################################
 
-{'name': 'Base Pywebdriver',
- 'version': '1.0.0',
- 'category': 'Generic Modules/Others',
- 'depends': [],
- 'author': 'Akretion',
- 'license': 'AGPL-3',
- 'description': """
-
-""",
- 'data': ['pywebdriver_view.xml',
-          ],
- 'installable': True,
- 'application': False,
- 'js': ['static/src/js/search_pywebdriver.js', ],
+{
+    'name': 'Base Pywebdriver',
+    'version': '1.0.0',
+    'category': 'Generic Modules/Others',
+    'depends': [],
+    'author': 'Akretion',
+    'license': 'AGPL-3',
+    'description': """
+    """,
+    'data': [
+        'pywebdriver_view.xml',
+        'pywebdriver_sequence.xml',
+    ],
+    'installable': True,
+    'application': False,
+    'js': ['static/src/js/discovery.js', ],
 }

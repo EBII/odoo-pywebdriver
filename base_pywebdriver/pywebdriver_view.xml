@@ -18,6 +18,7 @@
                     <group>
                         <field name="name"/>
                         <field name="url"/>
+                        <field name="state"/>
                     </group>
                     <notebook colspan="4">
                         <page name="printers" string="Printers">
@@ -38,7 +39,10 @@
             <field name="model">pywebdriver.server</field>
             <field name="arch" type="xml">
                 <tree string="Server" >
-                    <field name="name" />
+                    <field name="name"/>
+                    <field name="url" />
+                    <field name="printer_ids" widget="one2many_list"/>
+                    <field name="state" widget="statusbar" statusbar_visible="disconnected, connected" statusbar_colors='{"disconnected":"red"}'/>
                 </tree>
             </field>
         </record>
@@ -86,6 +90,7 @@
             <field name="arch" type="xml">
                 <tree string="Printer" >
                     <field name="name" />
+                    <field name="server_id" />
                 </tree>
             </field>
         </record>
@@ -114,11 +119,10 @@
         <record model="ir.actions.client" id="pywebdriver_search_action">
             <field name="name">Discovery</field>
             <field name="tag">discovery</field>
-            <field name="params">{}</field>
         </record>
 
         <menuitem action="pywebdriver_search_action"
-                  id="menu_pywebdriver_search_server"
+                  id="menu_pywebdriver_discovery"
                   name="Discovery Server"
                   parent="menu_pywebdriver"
                   />
